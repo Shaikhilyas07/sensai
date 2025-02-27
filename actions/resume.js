@@ -8,6 +8,7 @@ import { revalidatePath } from "next/cache";
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
+
 export async function saveResume(content) {
   const { userId } = await auth();
   if (!userId) throw new Error("Unauthorized");
@@ -95,4 +96,5 @@ export async function improveWithAI({ current, type }) {
     console.error("Error improving content:", error);
     throw new Error("Failed to improve content");
   }
+
 }

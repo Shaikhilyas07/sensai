@@ -37,6 +37,7 @@ const DashboardView = ({ insights }) => {
     median: range.median / 1000,
   }));
 
+ 
   const getDemandLevelColor = (level) => {
     switch (level.toLowerCase()) {
       case "high":

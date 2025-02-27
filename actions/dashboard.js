@@ -1,11 +1,12 @@
 "use server";
-
+import { industries } from "@/data/industries";
 import { db } from "@/lib/prisma";
-import { auth } from "@clerk/nextjs/server";
+import { auth, clerkClient } from "@clerk/nextjs/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
 
 export const generateAIInsights = async (industry) => {
   const prompt = `
@@ -32,9 +33,10 @@ export const generateAIInsights = async (industry) => {
   const response = result.response;
   const text = response.text();
   const cleanedText = text.replace(/```(?:json)?\n?/g, "").trim();
-
+  
   return JSON.parse(cleanedText);
 };
+
 
 export async function getIndustryInsights() {
   const { userId } = await auth();
@@ -60,7 +62,6 @@ export async function getIndustryInsights() {
         nextUpdate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
       },
     });
-
     return industryInsight;
   }
 

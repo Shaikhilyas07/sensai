@@ -28,7 +28,7 @@ export default function LandingPage() {
       <div className="grid-background"></div>
       {/* Hero Section */}
       <HeroSection />
-
+      
       {/* Features Section */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
         <div className="container mx-auto px-4 md:px-6">
@@ -55,6 +55,7 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
 
       {/* Stats Section */}
       <section className="w-full py-12 md:py-24 bg-muted/50">
@@ -155,7 +156,7 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
+      
       {/* FAQ Section */}
       <section className="w-full py-12 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
@@ -182,7 +183,7 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
+      
       {/* CTA Section */}
       <section className="w-full">
         <div className="mx-auto py-24 gradient rounded-lg">

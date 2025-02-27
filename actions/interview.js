@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/lib/prisma";
-import { auth } from "@clerk/nextjs/server";
+import { auth, clerkMiddleware } from "@clerk/nextjs/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
@@ -56,6 +56,8 @@ export async function generateQuiz() {
     throw new Error("Failed to generate quiz questions");
   }
 }
+
+
 
 export async function saveQuizResult(questions, answers, score) {
   const { userId } = await auth();
